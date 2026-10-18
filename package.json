@@ -1,0 +1,11 @@
+{
+  "name": "stay-clean",
+  "private": true,
+  "packageManager": "pnpm@10.28.0",
+  "scripts": {
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "verify": "pnpm typecheck && pnpm lint && pnpm test"
+  }
+}

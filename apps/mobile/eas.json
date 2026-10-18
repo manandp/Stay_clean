@@ -1,0 +1,19 @@
+{
+  "cli": { "version": ">= 16.0.0", "appVersionSource": "remote" },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": { "APP_ENV": "development", "AI_PROXY_URL": "http://localhost:8787" }
+    },
+    "preview": {
+      "distribution": "internal",
+      "env": { "APP_ENV": "preview", "AI_PROXY_URL": "https://stay-clean-ai-proxy-staging.example.workers.dev" }
+    },
+    "production": {
+      "autoIncrement": true,
+      "env": { "APP_ENV": "production", "AI_PROXY_URL": "https://stay-clean-ai-proxy.example.workers.dev" }
+    }
+  },
+  "submit": { "production": {} }
+}

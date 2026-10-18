@@ -1,0 +1,25 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "stay-clean-ai-proxy",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  // Never log request bodies: observability only records our own metadata lines.
+  "observability": { "enabled": true },
+  "vars": { "APP_ENV": "development", "CLAUDE_MODEL": "claude-opus-5-5" },
+  "ratelimits": [
+    { "name": "REGISTER_LIMITER", "namespace_id": "1001", "simple": { "limit": 5, "period": 60 } },
+    { "name": "AI_LIMITER", "namespace_id": "1002", "simple": { "limit": 6, "period": 60 } }
+  ],
+  "env": {
+    "production": {
+      "name": "stay-clean-ai-proxy",
+      "vars": { "APP_ENV": "production", "CLAUDE_MODEL": "claude-opus-5-5" },
+      "ratelimits": [
+        { "name": "REGISTER_LIMITER", "namespace_id": "2001", "simple": { "limit": 5, "period": 60 } },
+        { "name": "AI_LIMITER", "namespace_id": "2002", "simple": { "limit": 6, "period": 60 } }
+      ]
+    }
+  }
+  // Secrets (set with `wrangler secret put`): ANTHROPIC_API_KEY, TOKEN_SECRET
+}
