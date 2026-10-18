@@ -1,6 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, useFocusEffect } from 'expo-router';
-import { usePreventScreenCapture } from 'expo-screen-capture';
+import { usePreventScreenCapture } from '@/lib/screen-capture';
 import { useCallback, useState } from 'react';
 import { Pressable, StyleSheet, TextInput, View } from 'react-native';
 import { Button, Card, Gap, Screen, Text, usePalette } from '@/components/ui';

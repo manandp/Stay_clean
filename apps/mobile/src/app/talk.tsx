@@ -1,6 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { screenForRisk } from '@stay-clean/shared';
-import { usePreventScreenCapture } from 'expo-screen-capture';
+import { usePreventScreenCapture } from '@/lib/screen-capture';
 import { router } from 'expo-router';
 import { useState } from 'react';
 import { ActivityIndicator, KeyboardAvoidingView, Platform, Pressable, StyleSheet, TextInput, View } from 'react-native';

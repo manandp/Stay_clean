@@ -1,6 +1,6 @@
 import { ExpoSpeechRecognitionModule, useSpeechRecognitionEvent } from 'expo-speech-recognition';
 import { useCallback, useRef, useState } from 'react';
-import { Alert } from 'react-native';
+import { Alert } from './alert';
 
 /**
  * Speech-to-text that stays on the phone when the device supports it. No

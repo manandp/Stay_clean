@@ -12,7 +12,9 @@ const config: ExpoConfig = {
   icon: './assets/images/icon.png',
   scheme: 'stayclean',
   userInterfaceStyle: 'automatic',
-  platforms: ['ios', 'android'],
+  // 'web' is only the browser demo (pnpm demo:web); the real app is iOS and Android.
+  platforms: ['ios', 'android', 'web'],
+  web: { output: 'single', bundler: 'metro' },
   ios: {
     // TODO(release): replace with your own bundle identifier.
     bundleIdentifier: 'com.example.stayclean',
@@ -37,7 +39,8 @@ const config: ExpoConfig = {
     predictiveBackGestureEnabled: false,
   },
   plugins: [
-    'expo-router',
+    // One web bundle, so the browser demo can ship as a single page.
+    ['expo-router', { asyncRoutes: { web: false } }],
     ['expo-splash-screen', { backgroundColor: '#0F1B29', image: './assets/images/splash-icon.png', imageWidth: 76 }],
     ['expo-sqlite', { useSQLCipher: true }],
     'expo-secure-store',

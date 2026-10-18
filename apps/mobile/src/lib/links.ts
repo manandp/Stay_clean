@@ -1,6 +1,6 @@
 import * as Linking from 'expo-linking';
 import * as WebBrowser from 'expo-web-browser';
-import { Alert } from 'react-native';
+import { Alert } from './alert';
 
 export async function callNumber(digits: string): Promise<void> {
   try {

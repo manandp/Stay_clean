@@ -1,10 +1,11 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, useLocalSearchParams } from 'expo-router';
-import { usePreventScreenCapture } from 'expo-screen-capture';
+import { usePreventScreenCapture } from '@/lib/screen-capture';
 import { useEffect, useState } from 'react';
-import { Alert, Pressable, StyleSheet, Switch, View } from 'react-native';
+import { Pressable, StyleSheet, Switch, View } from 'react-native';
 import { Button, Card, Gap, Screen, Text, usePalette } from '@/components/ui';
 import { deleteEntry, getEntry, setPersonalize, setSetting, type JournalEntry } from '@/lib/db';
+import { Alert } from '@/lib/alert';
 
 export default function EntryDetail() {
   usePreventScreenCapture();

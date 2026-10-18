@@ -19,3 +19,4 @@ coverage/
 npm-debug.*
 yarn-error.*
 .DS_Store
+dist-web/

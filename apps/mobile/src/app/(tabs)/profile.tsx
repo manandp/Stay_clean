@@ -1,13 +1,14 @@
 import * as LocalAuthentication from 'expo-local-authentication';
 import { router } from 'expo-router';
 import { useState } from 'react';
-import { Alert, Share, StyleSheet, Switch, TextInput, View } from 'react-native';
+import { Share, StyleSheet, Switch, TextInput, View } from 'react-native';
 import { Button, Card, Gap, LinkRow, Screen, Text, usePalette } from '@/components/ui';
 import { useAppState } from '@/lib/app-state';
 import { exportAll, setSetting, wipeEverything } from '@/lib/db';
 import { openWeb } from '@/lib/links';
 import { cancelAllNotifications, requestNotificationPermission } from '@/lib/notifications';
 import { palettes, radius } from '@/lib/theme';
+import { Alert } from '@/lib/alert';
 
 // TODO(release): replace with your hosted privacy policy and terms pages.
 const PRIVACY_URL = 'https://example.com/stay-clean/privacy';

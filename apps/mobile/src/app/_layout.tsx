@@ -1,11 +1,16 @@
-import { Stack } from 'expo-router';
+import { router, Stack, usePathname } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
+import { Platform } from 'react-native';
 import { AppLockGate } from '@/components/app-lock';
+import { DemoFrame } from '@/components/demo-frame';
 import { AppStateProvider, useAppState } from '@/lib/app-state';
 
 void SplashScreen.preventAutoHideAsync();
+
+/** The URL the browser demo was opened at, before the router changes it. */
+const initialWebPath = Platform.OS === 'web' ? window.location.pathname : '/';
 
 function RootStack() {
   const { ready, profile } = useAppState();
@@ -15,6 +20,16 @@ function RootStack() {
   }, [ready]);
 
   const onboarded = !!profile;
+  const pathname = usePathname();
+
+  // In the browser the page opens at whatever URL was loaded, so send people
+  // to the screen they can actually use. The phone apps start there already.
+  useEffect(() => {
+    if (Platform.OS !== 'web' || !ready) return;
+    const inOnboarding = pathname.startsWith('/onboarding');
+    if (!onboarded && !inOnboarding && initialWebPath !== '/crisis') router.replace('/onboarding');
+    if (onboarded && inOnboarding) router.replace('/');
+  }, [ready, onboarded, pathname]);
   return (
     <>
       <StatusBar style="auto" />
@@ -36,10 +51,12 @@ function RootStack() {
 
 export default function RootLayout() {
   return (
-    <AppStateProvider>
-      <AppLockGate>
-        <RootStack />
-      </AppLockGate>
-    </AppStateProvider>
+    <DemoFrame>
+      <AppStateProvider>
+        <AppLockGate>
+          <RootStack />
+        </AppLockGate>
+      </AppStateProvider>
+    </DemoFrame>
   );
 }

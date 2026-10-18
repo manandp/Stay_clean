@@ -40,6 +40,15 @@ npx expo start --dev-client
 
 Set `AI_PROXY_URL` in `apps/mobile/eas.json` for each build profile. For a simulator talking to your laptop, `http://localhost:8787` works on iOS; Android emulators use `http://10.0.2.2:8787`.
 
+**Browser demo** (no phone needed; for showing the app, not for real use)
+
+```bash
+cd apps/mobile
+pnpm demo:web     # writes dist-web/ and a single-file dist-web/stay-clean-demo.html
+```
+
+The web build swaps in browser stand-ins (files ending `.web.ts`/`.web.tsx`): entries are saved unencrypted in the browser, reminders and screenshot blocking are off, and dialogs are drawn in the page. A banner says so on every screen. AI replies need the AI server, as on the phone.
+
 ## Deploy
 
 **AI server**

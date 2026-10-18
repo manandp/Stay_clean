@@ -1,6 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { ADDICTIONS, COPING_TOOLS } from '@stay-clean/shared';
-import { usePreventScreenCapture } from 'expo-screen-capture';
+import { usePreventScreenCapture } from '@/lib/screen-capture';
 import { router } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { AccessibilityInfo, Animated, Easing, Pressable, StyleSheet, View } from 'react-native';
