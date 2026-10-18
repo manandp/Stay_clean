@@ -7,6 +7,7 @@ const AI_PROXY_URL = process.env.AI_PROXY_URL ?? 'http://localhost:8787';
 const config: ExpoConfig = {
   name: 'Stay Clean',
   slug: 'stay-clean',
+  owner: 'manandp',
   version: '1.0.0',
   orientation: 'portrait',
   icon: './assets/images/icon.png',
@@ -62,6 +63,8 @@ const config: ExpoConfig = {
   extra: {
     appEnv: APP_ENV,
     aiProxyUrl: AI_PROXY_URL,
+    // Links this project to its EAS project for cloud builds.
+    eas: { projectId: '4f24c7a8-fa8f-462c-9cad-f77f42421f39' },
   },
 };
 
